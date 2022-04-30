@@ -1,6 +1,12 @@
-const express = require('express')
-const app = express()
-const port = 3333
+const express = require('express');
+const routes = require('./routes');
 
-app.get('/', (req, res) => res.send('Hello World!'))
-app.listen(port, () => console.log(`listening on port ${port}!`))
+require('./database')
+
+const app = express();
+const port = 3333;
+
+app.use(express.json());
+app.use(routes);
+
+app.listen(port, () => console.log(`listening on port ${port}!`));
